@@ -47,6 +47,8 @@ func main() {
 				switch message := event.Message.(type) {
 				case *linebot.TextMessage:
 					log.Printf("User ID is %v\n", event.Source.UserID)
+					log.Printf("Room ID is %v\n", event.Source.RoomID)
+					log.Printf("Group ID is %v\n", event.Source.GroupID)
 					if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message.Text)).Do(); err != nil {
 						log.Print(err)
 					}
